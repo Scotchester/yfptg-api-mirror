@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Fetch # the current API response, pipe it through jq and into a new file named with today's date
-        run: curl https://www.consumerfinance.gov/paying-for-college2/understanding-your-financial-aid-offer/api/constants/ | jq > "$(date +%F)"
+        run: curl https://www.consumerfinance.gov/paying-for-college2/understanding-your-financial-aid-offer/api/constants/ | jq > "$(date +%F).json"
       # Compare with current file
       # If there is any diff, rename existing current to yesterday's date, copy today's file to current
       - name: Commit # the changes
