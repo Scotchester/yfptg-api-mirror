@@ -2,6 +2,8 @@ name: Do the Thing
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 7 * * *'
 
 jobs:
   fetch:
