@@ -1,0 +1,13 @@
+name: Do the Thing
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Print the current API response
+        run: curl https://www.consumerfinance.gov/paying-for-college2/understanding-your-financial-aid-offer/api/constants/ | jq
