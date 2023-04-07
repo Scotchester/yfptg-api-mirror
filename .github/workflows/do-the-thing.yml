@@ -6,13 +6,13 @@ on:
     - cron: '0 7 * * *'
 
 jobs:
-  fetch:
+  Mirror Static Endpoints:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
       - name: Fetch # the current API response, pipe it through jq and into a new file named with today's date
-        run: curl https://www.consumerfinance.gov/paying-for-college2/understanding-your-financial-aid-offer/api/constants/ | jq > "$(date +%F).json"
+        run: ./do-the-thing.sh"
       # Compare with current file
       # If there is any diff, rename existing current to yesterday's date, copy today's file to current
       - name: Commit # the changes
@@ -20,5 +20,5 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
-          git commit -m "Update API response"
+          git commit -m "Update API responses"
           git push
